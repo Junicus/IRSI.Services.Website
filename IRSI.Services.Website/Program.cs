@@ -17,9 +17,12 @@ namespace IRSI.Services.Website
             };
 
         public static void Main(string[] args)
-                    {
+        {
+            Console.Title = "IRSI.Services.Website";
             var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
                 .AddInMemoryCollection(defaults)
+                .AddJsonFile("hosting.json", optional: true)
                 .AddEnvironmentVariables("ASPNETCORE_")
                 .AddCommandLine(args)
                 .Build();
