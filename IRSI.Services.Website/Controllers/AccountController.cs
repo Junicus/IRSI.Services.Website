@@ -12,7 +12,7 @@ namespace IRSI.Services.Website.Controllers
     {
         public async Task Logout()
         {
-            await HttpContext.Authentication.SignOutAsync("cookies");
+            await HttpContext.Authentication.SignOutAsync("Cookies");
             await HttpContext.Authentication.SignOutAsync("oidc");
         }
 
