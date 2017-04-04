@@ -1,0 +1,50 @@
+﻿.avt-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.avt-content header {
+    margin: 0 25px 0 25px;
+}
+
+.avt-table-section {
+    border-spacing: 0;
+    margin: 0 25px 0 25px;
+    display: flex;
+    justify-content: center;
+
+    table {
+        border-collapse: collapse;
+
+        thead {
+            background-color: royalblue;
+            color: white;
+
+            td {
+                padding: 10px;
+            }
+        }
+
+        tbody {
+            tr:nth-child(even) {
+                background-color: lightgray;
+            }
+
+            td {
+                padding: 0 10px;
+            }
+        }
+    }
+}
+
+.avt-pagination-section {
+    margin: 0 25px 0 25px;
+}
+
+.avt-pagination {
+    margin: 0;
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}

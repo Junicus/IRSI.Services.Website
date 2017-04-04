@@ -1,0 +1,59 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 22/06/2016 15:31
+  	*/
+
+@font-face {
+  font-family: "marketing";
+  src: url("./fonts/marketing.eot");
+  src: url("./fonts/marketing.eot?#iefix") format("embedded-opentype"),
+       url("./fonts/marketing.woff") format("woff"),
+       url("./fonts/marketing.ttf") format("truetype"),
+       url("./fonts/marketing.svg#marketing") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "marketing";
+    src: url(".fonts/marketing.svg#marketing") format("svg");
+  }
+}
+
+[class^="marketing-"]:before, [class*=" marketing-"]:before,
+[class^="marketing-"]:after, [class*=" marketing-"]:after {   
+  font-family: marketing;
+  font-style: normal;
+}
+
+.marketing-browser:before { content: "\f100"; }
+.marketing-browser-1:before { content: "\f101"; }
+.marketing-chat:before { content: "\f102"; }
+.marketing-cloud-data:before { content: "\f103"; }
+.marketing-computing-cloud:before { content: "\f104"; }
+.marketing-cursor:before { content: "\f105"; }
+.marketing-devices:before { content: "\f106"; }
+.marketing-diagram:before { content: "\f107"; }
+.marketing-email:before { content: "\f108"; }
+.marketing-folders:before { content: "\f109"; }
+.marketing-hosting:before { content: "\f10a"; }
+.marketing-key:before { content: "\f10b"; }
+.marketing-laptop:before { content: "\f10c"; }
+.marketing-light-bulb:before { content: "\f10d"; }
+.marketing-link:before { content: "\f10e"; }
+.marketing-monitoring:before { content: "\f10f"; }
+.marketing-payment-method:before { content: "\f110"; }
+.marketing-photo-camera:before { content: "\f111"; }
+.marketing-rocket:before { content: "\f112"; }
+.marketing-search:before { content: "\f113"; }
+.marketing-search-1:before { content: "\f114"; }
+.marketing-search-2:before { content: "\f115"; }
+.marketing-server:before { content: "\f116"; }
+.marketing-shopping-cart:before { content: "\f117"; }
+.marketing-smartphone:before { content: "\f118"; }
+.marketing-speedometer:before { content: "\f119"; }
+.marketing-support:before { content: "\f11a"; }
+.marketing-tag:before { content: "\f11b"; }
+.marketing-time:before { content: "\f11c"; }
+.marketing-website:before { content: "\f11d"; }

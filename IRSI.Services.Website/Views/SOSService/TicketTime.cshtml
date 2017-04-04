@@ -1,0 +1,55 @@
+﻿@model IRSI.Services.Website.ViewModels.SOS.TicketTimeViewModel
+
+@{
+    ViewData["Title"] = "Speed Of Service";
+}
+
+
+@section nav_links {
+    <section>
+        <ul class="nav navbar-nav">
+            <li><a class="btn btn-link" asp-controller="SOSService" asp-action="Index">Speed of Service</a></li>
+        </ul>
+    </section>
+
+}
+
+@{
+
+}
+<section class="sos-content">
+    <form class="form-horizontal" method="post" asp-controller="SOSService" asp-action="TicketTime">
+        <div asp-validation-summary="ModelOnly"></div>
+        @if (ViewBag.Stores.Count > 0)
+        {
+            <div class="form-group">
+                <label asp-for="StoreId"></label>
+                <select asp-for="StoreId">
+                    @foreach (var store in ((List<IRSI.Services.Website.Models.Common.Store>)ViewBag.Stores).OrderBy(s => s.Number))
+                    {
+                        <option value="@store.Id">@store.Name</option>
+                    }
+                </select>
+            </div>
+        }
+        else
+        {
+            <input type="hidden" asp-for="StoreId" value="@ViewBag.Stores.FirstOrDefault().Id" />
+        }
+
+        <div class="form-group">
+            <label asp-for="StartDate"></label>
+            <input asp-for="StartDate" type="date" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="EndDate"></label>
+            <input asp-for="EndDate" type="date" />
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+
+    </form>
+</section>

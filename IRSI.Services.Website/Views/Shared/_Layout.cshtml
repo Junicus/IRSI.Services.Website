@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <environment names="Development">
+        <link rel="stylesheet" href="~/fonts/icomoon/style.css" />
+        <link rel="stylesheet" href="~/fonts/restaurant/restaurant.css" />
+        <link rel="stylesheet" href="~/fonts/office/office.css" />
+        <link rel="stylesheet" href="~/fonts/marketing/marketing.css" />
+        <link rel="stylesheet" href="~/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/fonts/icomoon/style.css" />
+        <link rel="stylesheet" href="~/fonts/restaurant/restaurant.css" />
+        <link rel="stylesheet" href="~/fonts/office/office.css" />
+        <link rel="stylesheet" href="~/fonts/marketing/marketing.css" />
+        <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    @await RenderSectionAsync("cssLinks", false)
+</head>
+<body>
+    <header class="top-header">
+        <nav class="navbar">
+            <div class="container">
+                <section class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a asp-controller="Home" asp-action="Index" class="navbar-brand">IRSI.Services</a>
+                </section>
+                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                    @await RenderSectionAsync("nav_links", false)
+                    <section>
+                        @await Html.PartialAsync("_LoginPartial")
+                    </section>
+                </div>
+            </div>
+        </nav>
+        @await RenderSectionAsync("header", false)
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+    <footer class="no-print">
+        <div class="container">
+            <hr />
+            <p>&copy; 2016 - International Restaurant Services, Inc.</p>
+        </div>
+    </footer>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="~/lib/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        @*var appInsights = window.appInsights || function (config) {
+            function i(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = "AuthenticatedUserContext", h = "start", c = "stop", l = "Track", a = l + "Event", v = l + "Page", y = u.createElement(o), r, f; y.src = config.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js"; u.getElementsByTagName(o)[0].parentNode.appendChild(y); try { t.cookie = u.cookie } catch (p) { } for (t.queue = [], t.version = "1.0", r = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"]; r.length;) i("track" + r.pop()); return i("set" + s), i("clear" + s), i(h + a), i(c + a), i(h + v), i(c + v), i("flush"), config.disableExceptionTracking || (r = "onerror", i("_" + r), f = e[r], e[r] = function (config, i, u, e, o) { var s = f && f(config, i, u, e, o); return s !== !0 && t["_" + r](config, i, u, e, o), s }), t
+        }({
+            instrumentationKey: "60d16e4b-8149-427e-9b24-5bb5057aa060"
+        });
+
+        window.appInsights = appInsights;
+        @{
+            var userId = (User.Identity.IsAuthenticated) ? User.Identity.Name.Replace(' ', '_').Replace(",;=|", "") : "Anonymous";
+        }
+        appInsights.setAuthenticatedUserContext("@userId")
+        appInsights.trackPageView();*@
+    </script>
+</body>
+
+</html>

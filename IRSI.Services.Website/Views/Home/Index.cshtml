@@ -1,0 +1,51 @@
+﻿@model IList<IRSI.Services.Website.ViewModels.Services.ServiceViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Header {
+    <section class="hero">
+        <div class="hero-body">
+            <h1>Welcome to IRSI.Services</h1>
+            <p>This site contains services used by IRSI</p>
+        </div>
+    </section>
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    @if (Model.Any())
+    {
+        <section class="services-nav">
+            <nav>
+                <ul class="services">
+                    @foreach (var service in Model)
+                    {
+                        <li class="service">
+                            <div class="service-content">
+                                <a class="service-link" href="@service.ServiceUrl">
+                                    <i class="service-icon @service.IconClass"></i>
+                                    <span class="service-text">@service.Name</span>
+                                </a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </section>
+    }
+    else
+    {
+        <section class="services-nav">
+            <p>There are no services, please contact IT</p>
+        </section>
+    }
+}
+else
+{
+    <section class="home-content">
+        <div>
+            <a class="btn btn-primary btn-lg" asp-controller="Account" asp-action="Login">Please Login</a>
+        </div>
+    </section>
+}

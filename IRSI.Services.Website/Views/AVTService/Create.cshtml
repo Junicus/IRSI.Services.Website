@@ -1,0 +1,90 @@
+﻿@model IRSI.Services.Website.Models.AVT.AVTItem
+
+@{
+    ViewBag.Title = "Create Actual vs. Theorical";
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Create A vs T</h3>
+            </div>
+            <div class="panel-body">
+
+                <form asp-action="Create">
+                    <h3 class="panel-title">Actual vs Theorical</h3>
+                    <hr />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="FiscalYear" class="control-label"></label>
+                        <input asp-for="FiscalYear" class="form-control" />
+                        <span asp-validation-for="FiscalYear" class="text-danger" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Period" class="control-label"></label>
+                        <input asp-for="Period" class="form-control" />
+                        <span asp-validation-for="Period" class="text-danger" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StoreId" class="control-label"></label>
+                        <select asp-for="StoreId" class="form-control">
+                            @{
+                                foreach (var store in ViewBag.Stores)
+                                {
+                                    <option value="@store.Key">@store.Value.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FGActual" class="control-label"></label>
+                        <input asp-for="FGActual" class="form-control" />
+                        <span asp-validation-for="FGActual" class="text-danger" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FGTarget" class="control-label"></label>
+                        <input asp-for="FGTarget" class="form-control" />
+                        <span asp-validation-for="FGTarget" class="text-danger" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AVTActual" class="control-label"></label>
+                        <input asp-for="AVTActual" class="form-control" />
+                        <span asp-validation-for="AVTActual" class="text-danger" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AVTTheoric" class="control-label"></label>
+                        <input asp-for="AVTTheoric" class="form-control" />
+                        <span asp-validation-for="AVTTheoric" class="text-danger" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ChampId" class="control-label"></label>
+                        <input asp-for="ChampId" class="form-control" />
+                        <span asp-validation-for="ChampId" class="text-danger" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ChampName" class="control-label"></label>
+                        <input asp-for="ChampName" class="form-control" />
+                        <span asp-validation-for="ChampName" class="text-danger" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="PayTotal" class="control-label"></label>
+                        <input asp-for="PayTotal" class="form-control" />
+                        <span asp-validation-for="PayTotal" class="text-danger" />
+                    </div>
+                    <div class="form-group">
+                        <a asp-action="Index" asp-controller="AVTService" class="btn btn-default">Cancel</a>
+                        <button type="submit" class="btn btn-default">Create AVT</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

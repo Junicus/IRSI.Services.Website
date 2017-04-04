@@ -1,0 +1,79 @@
+	/*
+  	office icon font: office
+  	Creation date: 18/03/2016 15:47
+  	*/
+
+@font-face {
+  font-family: "office";
+  src: url("./fonts/office.eot");
+  src: url("./fonts/office.eot?#iefix") format("embedded-opentype"),
+       url("./fonts/office.woff") format("woff"),
+       url("./fonts/office.ttf") format("truetype"),
+       url("./fonts/office.svg#office") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "office";
+    src: url("./fonts/office.svg#office") format("svg");
+  }
+}
+
+[class^="office-"]:before, [class*=" office-"]:before,
+[class^="office-"]:after, [class*=" office-"]:after {
+  font-family: office;
+  font-style: normal;
+}
+
+.office-agreement:before { content: "\f100"; }
+.office-analysis:before { content: "\f101"; }
+.office-analysis-1:before { content: "\f102"; }
+.office-bank:before { content: "\f103"; }
+.office-block:before { content: "\f104"; }
+.office-briefcase:before { content: "\f105"; }
+.office-businessmen:before { content: "\f106"; }
+.office-calculator:before { content: "\f107"; }
+.office-chair:before { content: "\f108"; }
+.office-chart:before { content: "\f109"; }
+.office-clock:before { content: "\f10a"; }
+.office-clock-1:before { content: "\f10b"; }
+.office-conference:before { content: "\f10c"; }
+.office-contract:before { content: "\f10d"; }
+.office-credit-cards:before { content: "\f10e"; }
+.office-cube:before { content: "\f10f"; }
+.office-currencies:before { content: "\f110"; }
+.office-directional:before { content: "\f111"; }
+.office-document:before { content: "\f112"; }
+.office-dollar-coins:before { content: "\f113"; }
+.office-dollar-symbol:before { content: "\f114"; }
+.office-handshake:before { content: "\f115"; }
+.office-hierarchy:before { content: "\f116"; }
+.office-horse:before { content: "\f117"; }
+.office-hot-drink:before { content: "\f118"; }
+.office-hourglass:before { content: "\f119"; }
+.office-identity:before { content: "\f11a"; }
+.office-international:before { content: "\f11b"; }
+.office-labyrinth:before { content: "\f11c"; }
+.office-lightbulb:before { content: "\f11d"; }
+.office-magnifying-glass:before { content: "\f11e"; }
+.office-medal:before { content: "\f11f"; }
+.office-megaphone:before { content: "\f120"; }
+.office-network:before { content: "\f121"; }
+.office-network-1:before { content: "\f122"; }
+.office-pie-chart:before { content: "\f123"; }
+.office-presentation:before { content: "\f124"; }
+.office-presentation-1:before { content: "\f125"; }
+.office-prize:before { content: "\f126"; }
+.office-rubber-stamp:before { content: "\f127"; }
+.office-searching:before { content: "\f128"; }
+.office-smartphone:before { content: "\f129"; }
+.office-stapler:before { content: "\f12a"; }
+.office-statistics:before { content: "\f12b"; }
+.office-success:before { content: "\f12c"; }
+.office-success-1:before { content: "\f12d"; }
+.office-tactics:before { content: "\f12e"; }
+.office-target:before { content: "\f12f"; }
+.office-task:before { content: "\f130"; }
+.office-thumb-up:before { content: "\f131"; }

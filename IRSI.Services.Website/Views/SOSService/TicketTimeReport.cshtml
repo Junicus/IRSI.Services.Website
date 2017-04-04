@@ -1,0 +1,89 @@
+﻿@model IRSI.Services.Website.ViewModels.SOS.TicketTimeReportViewModel
+@{
+    ViewData["Title"] = "Speed Of Service";
+}
+
+@section cssLinks{
+    <environment names="Development">
+        <link rel="stylesheet" href="~/css/report.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/css/report.min.css" asp-append-version="true" />
+    </environment>
+}
+
+@section nav_links {
+    <section>
+        <ul class="nav navbar-nav">
+            <li><a class="btn btn-link" asp-controller="SOSService" asp-action="Index">Speed of Service</a></li>
+        </ul>
+    </section>
+}
+
+<section class="report-content">
+    <article class="report">
+        <header>
+            <h1>Ticket Time</h1>
+            <h3>Store: @Model.Store.Name</h3>
+            <h3>Start: @Model.StartDate.ToString("MM/dd/yyyy")</h3>
+            <h3>End: @Model.EndDate.ToString("MM/dd/yyyy")</h3>
+        </header>
+        <section class="tickettime-summary">
+            <header>
+                <h2>Ticket Time Summary</h2>
+            </header>
+            <div class="rtable">
+                <div class="rrow header">
+                    <div class="rcell">DayPart</div>
+                    <div class="rcell">Business Date</div>
+                    @foreach (var summaryTitle in Model.SummaryGroupTitles)
+                    {
+                        <div class="rcell">@summaryTitle</div>
+                    }
+                </div>
+                @foreach (var summaryDayPart in Model.Summaries)
+                {
+                    bool firstDayPart = true;
+                    @foreach (var summaryDate in summaryDayPart.DayPartGroup.OrderBy(d => d.BusinessDate))
+                    {
+                        <div class="rrow">
+
+                            <div class="rcell">
+                                @if (firstDayPart)
+                                {
+                                    @summaryDayPart.DayPart
+                                    firstDayPart = false;
+                                }
+                            </div>
+                            <div class="rcell">@summaryDate.BusinessDate.ToString("MM/dd/yyyy")</div>
+                            @foreach (var summary in summaryDate.DateGroup)
+                            {
+                                <div class="rcell">@summary.Count</div>
+                            }
+                        </div>
+
+                    }
+                }
+            </div>
+        </section>
+        <section class="tickettime-averages">
+            <header>
+                <h2>Ticket Time Averages</h2>
+            </header>
+            <div class="rtable">
+                <div class="rrow header">
+                    <div class="rcell">Business Date</div>
+                    <div class="rcell">Average Ticket Time</div>
+                </div>
+                @foreach (var averageKpi in Model.Averages)
+                {
+                    <div class="rrow">
+                        <div class="rcell">@averageKpi.BusinessDate.ToString("MM/dd/yyyy")</div>
+                        <div class="rcell">@averageKpi.Average</div>
+                    </div>
+                }
+            </div>
+        </section>
+        <footer></footer>
+    </article>
+</section>

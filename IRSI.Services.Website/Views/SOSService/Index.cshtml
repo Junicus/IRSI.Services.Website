@@ -1,0 +1,47 @@
+﻿@model Dictionary<IRSI.Services.Website.Models.Common.Store, IRSI.Services.Website.ViewModels.SOS.StoreKpiViewModel>
+@{
+    ViewData["Title"] = "Speed Of Service";
+}
+
+@section nav_links {
+    <section>
+        <ul class="nav navbar-nav">
+            <li><a class="btn btn-link" asp-controller="SOSService" asp-action="TicketTime">Ticket Time</a></li>
+        </ul>
+    </section>
+}
+
+<section class="sos-content">
+    @{
+        foreach (var modelKey in Model.Keys.OrderBy(k => k.Number))
+        {
+            if (Model[modelKey].Kpis.Any())
+            {
+                <div class="kpi-card">
+                    <div class="kpi-card-header">
+                        <h3 class="kpi-card-title">@modelKey.Number @modelKey.Name</h3>
+                    </div>
+                    <div class="kpi-card-body">
+                        @foreach (var kpi in Model[modelKey].Kpis)
+                    {
+                            <div class="kpi">
+                                <div class="@(kpi.Variance > 0 ? "kpi-negative" : "kpi-positive")">
+                                    <h4>@kpi.Title</h4>
+                                    <div class="kpi-metrics">
+                                        <div class="kpi-amount">@kpi.Average.ToString("F")</div>
+                                        <div class="kpi-comp">
+                                            <div>Goal: <span>@kpi.Goal</span></div>
+                                            <div>Var: <span>@kpi.Variance%</span></div>
+                                        </div>
+                                    </div>
+                                    <div>Time: @kpi.TimePeriod</div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    }
+
+</section>

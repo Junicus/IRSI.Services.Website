@@ -1,0 +1,111 @@
+﻿@section cssLinks{
+    <environment names="Development">
+        <link rel="stylesheet" href="~/css/avt.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/css/avt.min.css" asp-append-version="true" />
+    </environment>
+}
+
+<section class="avt-content">
+    <header>
+        <h2>Actual vs. Theorical</h2><a class="btn btn-link" asp-action="Create" asp-controller="AVTService">create</a>
+    </header>
+    <section class="avt-table-section">
+        <table>
+            <thead>
+                <tr>
+                    <td>Fiscal Year</td>
+                    <td>Period</td>
+                    <td>Store</td>
+                    <td>FG Actual</td>
+                    <td>FG Target</td>
+                    <td>FG Variance</td>
+                    <td>AV TActual</td>
+                    <td>AVT Theoric</td>
+                    <td>AVT Gap</td>
+                    <td>Champ Id</td>
+                    <td>Champ Name</td>
+                    <td>Total Pay</td>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (ViewBag.AVTPage != null)
+                    {
+                        foreach (var avt in ViewBag.AVTPage.Avts)
+                        {
+                            var avtVariance = avt.AVTItem.FGActual - avt.AVTItem.FGTarget;
+                            var avtGap = avt.AVTItem.AVTActual - avt.AVTItem.AVTTheoric;
+
+                            <tr>
+                                <td>@avt.AVTItem.FiscalYear</td>
+                                <td>@avt.AVTItem.Period</td>
+                                <td>@ViewBag.Stores[@avt.AVTItem.StoreId].Name</td>
+                                <td>@avt.AVTItem.FGActual</td>
+                                <td>@avt.AVTItem.FGTarget</td>
+                                <td>@avtVariance</td>
+                                <td>@avt.AVTItem.AVTActual</td>
+                                <td>@avt.AVTItem.AVTTheoric</td>
+                                <td>@avtGap</td>
+                                <td>@avt.AVTItem.ChampId</td>
+                                <td>@avt.AVTItem.ChampName</td>
+                                <td>@avt.AVTItem.PayTotal</td>
+                                <td>
+                                    <a class="btn btn-link" asp-action="Edit" asp-controller="AVTService" asp-route-id="@avt.AVTItem.Id">Edit</a>
+                                    <a class="btn btn-link" asp-action="Delete" asp-controller="AVTService" asp-route-id="@avt.AVTItem.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </section>
+    <section class="avt-pagination-section">
+        <nav>
+            <ul class="avt-pagination">
+                @{
+                    if (!string.IsNullOrEmpty(ViewBag.PreviousPage))
+                    {
+                        <li>
+                            <a href="@ViewBag.PreviousPage" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    }
+                }
+
+                @{
+                    if (ViewBag.AVTPage != null)
+                    {
+                        var currPage = ViewBag.AVTPage.Page;
+                        if (ViewBag.AVTPage.TotalPages < 10)
+                        {
+                            for (var index = 1; index <= ViewBag.AVTPage.TotalPages; index++)
+                            {
+
+                                <li>
+                                    <a asp-action="Index" asp-controller="AVT"
+                                       asp-route-page="@index"
+                                       asp-route-page_size="@ViewBag.PageSize">@index</a>
+                                </li>
+                            }
+                        }
+                    }
+                }
+
+                @{
+                    if (!string.IsNullOrEmpty(ViewBag.NextPage))
+                    {
+                        <li>
+                            <a href="@ViewBag.NextPage" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        </nav>
+    </section>
+</section>

@@ -1,0 +1,13 @@
+﻿<dl>
+    @foreach (var claim in User.Claims)
+    {
+        <dt>@claim.Type</dt>
+        <dd>@claim.Value</dd>
+    }
+
+    <dt>IdentityToken</dt>
+    <dd>@ViewBag.IdentityToken</dd>
+
+    <dt>AccessToken</dt>
+    <dd>@ViewBag.AccessToken</dd>
+</dl>

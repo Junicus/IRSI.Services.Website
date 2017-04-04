@@ -1,0 +1,133 @@
+﻿@model TeamSalesDashboardViewModel
+
+<div class="content">
+    <section class="dashboard">
+        <h1>@Model.Store.Name</h1>
+        <section class="dashboard-header">
+            <div class="timeframe">
+                <div>
+                    <span>From: </span>
+                    <time>@Model.CurrentStartDate.ToString("MMMM d, yyyy")</time>
+                </div>
+                <div>
+                    <span>To:</span>
+                    <time>@Model.CurrentEndDate.ToString("MMMM d, yyyy")</time>
+                </div>
+            </div>
+            <div class="kpi">
+                <div>
+                    <span class="amount">@Model.CurrentWeekSalesPerHour.ToString("C")</span>
+                    <span>/hr</span>
+                </div>
+                <div class="kpi-metric">
+                    <span class="metric">Sales/hr</span><span class="time">Current</span>
+                </div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-amount">
+                    <span class="amount">@Model.LastWeekSalesPerHour.ToString("C")</span>
+                    <span>/hr</span>
+                </div>
+                <div class="kpi-metric">
+                    <span class="metric">Sales/hr</span><span class="time">Last Week</span>
+                </div>
+            </div>
+        </section>
+        <section class="dashboard-content">
+
+            <div class="stats">
+                <div class="title">10 Highest Sales/hr</div>
+                <div class="stat-content">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td>Employee</td>
+                                <td>Sales / hr</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Top10EmployeeSales)
+                            {
+                                <tr>
+                                    <td>@item.EmployeeName</td>
+                                    <td>@item.SalesPerHour.ToString("C")</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="title">10 Lowest Sales/hr</div>
+                <div class="stat-content">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td>Employee</td>
+                                <td>Sales / hr</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Bottom10EmployeeSales)
+                            {
+                                <tr>
+                                    <td>@item.EmployeeName</td>
+                                    <td>@item.SalesPerHour.ToString("C")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="title">Top 10 Improvement vs Previous Week</div>
+                <div class="stat-content">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Sales / hr</th>
+                                <th>Increment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.EmployeeSalesIncrementWeek)
+                            {
+                                <tr>
+                                    <td>@item.EmployeeName</td>
+                                    <td>@item.CurrentSalesPerHour.ToString("C")</td>
+                                    <td>@item.Difference.ToString("C")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="title">Top 10 Improvement vs Previous Period</div>
+                <div class="stat-content">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Sales / hr</th>
+                                <th>Increment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.EmployeeSalesIncrementPeriod)
+                            {
+                                <tr>
+                                    <td>@item.EmployeeName</td>
+                                    <td>@item.CurrentSalesPerHour.ToString("C")</td>
+                                    <td>@item.Difference.ToString("C")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </section>
+</div>

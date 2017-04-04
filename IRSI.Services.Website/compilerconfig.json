@@ -1,0 +1,34 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/report.css",
+    "inputFile": "wwwroot/css/report.scss",
+    "options": {
+      "indentType": "tab",
+      "outputStyle": "expanded"
+    }
+  },
+  {
+    "outputFile": "wwwroot/css/avt.css",
+    "inputFile": "wwwroot/css/avt.scss",
+    "options": {
+      "indentType": "tab",
+      "outputStyle": "expanded"
+    }
+  },
+  {
+    "outputFile": "wwwroot/css/bootstrap.css",
+    "inputFile": "wwwroot/css/bootstrap.scss",
+    "options": {
+      "indentType": "tab",
+      "outputStyle": "expanded"
+    }
+  },
+  {
+    "inputFile": "wwwroot/css/site.scss",
+    "outputFile": "wwwroot/css/site.css",
+    "options": {
+      "identType": "tab",
+      "outputStyle": "expanded"
+    }
+  }
+]
