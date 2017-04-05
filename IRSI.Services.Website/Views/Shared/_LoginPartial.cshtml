@@ -1,7 +1,8 @@
 ﻿@if (User.Identity.IsAuthenticated)
 {
+    var given_name = User.Claims.SingleOrDefault(t=>t.Type == "given_name")?.Value;
     <ul class="nav navbar-nav navbar-right">
-        <li><a class="btn btn-link" href="#0">Hello @User.Identity.Name</a></li>
+        <li><a class="btn btn-link" href="#0">Hello @given_name</a></li>
         <li><a class="btn btn-link" asp-controller="Account" asp-action="Logout">Logout</a></li>
     </ul>
 }
